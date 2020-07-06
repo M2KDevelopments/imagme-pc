@@ -3,21 +3,18 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane fx:id="mainScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="1000.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1"
+            prefHeight="650.0" prefWidth="1000.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
     <children>
-        <SplitPane dividerPositions="0.5" layoutX="82.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0"
-                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                   AnchorPane.topAnchor="0.0">
+        <SplitPane dividerPositions="0.5" layoutX="82.0" layoutY="100.0" AnchorPane.bottomAnchor="0.0"
+                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <VBox alignment="TOP_CENTER" spacing="6.0" styleClass="fontSize">
                     <children>
@@ -34,7 +31,7 @@
                                         <ImageView fx:id="imageViewLogo" fitHeight="150.0" fitWidth="200.0"
                                                    pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../icons/icon_m2kdev.png"/>
+                                                <Image url="@../icons/logo.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -42,16 +39,29 @@
                                         <Cursor fx:constant="HAND"/>
                                     </cursor>
                                 </JFXButton>
-                                <JFXCheckBox fx:id="chbxUseImage" checkedColor="#10689c" selected="true"
-                                             text="Use Image"/>
+                                <JFXCheckBox fx:id="chbxUseImage" checkedColor="#10689c" onAction="#testing"
+                                             selected="true" text="Use Image"/>
                             </children>
                         </HBox>
                         <Separator prefWidth="200.0"/>
                         <HBox alignment="CENTER" spacing="15.0">
                             <children>
-                                <JFXColorPicker fx:id="colorPickImage" editable="true" onAction="#colorChange"
+                                <RadioButton fx:id="radLightColors" mnemonicParsing="false" onAction="#testing"
+                                             selected="true" text="Light Colors">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="colors"/>
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton fx:id="radDarkColors" mnemonicParsing="false" onAction="#testing"
+                                             text="Dark Colors" toggleGroup="$colors"/>
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0"/>
+                        <HBox alignment="CENTER" spacing="15.0">
+                            <children>
+                                <JFXColorPicker fx:id="colorPickImage" editable="true" onAction="#testing"
                                                 promptText="Pick Color"/>
-                                <JFXCheckBox fx:id="chbxColor" checkedColor="#104e9c" onAction="#useSpecificColor"
+                                <JFXCheckBox fx:id="chbxColor" checkedColor="#104e9c" onAction="#testing"
                                              text="Use Specific Color"/>
                             </children>
                             <VBox.margin>
@@ -61,11 +71,22 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                             </padding>
                         </HBox>
+                        <HBox alignment="CENTER" spacing="15.0">
+                            <children>
+                                <Label fx:id="lblOpacity" text="Opacity"/>
+                                <JFXSlider fx:id="sliderOpacity" max="255.0" minorTickCount="5" prefHeight="24.0"
+                                           prefWidth="370.0" showTickLabels="true" showTickMarks="true"
+                                           snapToTicks="true" value="255.0"/>
+                            </children>
+                        </HBox>
+                        <JFXCheckBox fx:id="chbxShadow" checkedColor="#104e9c" onAction="#testing" selected="true"
+                                     text="Shadow Effect"/>
                         <HBox alignment="CENTER" prefHeight="32.0" prefWidth="442.0" spacing="15.0">
                             <children>
-                                <JFXColorPicker fx:id="colorPickText" editable="true" onAction="#colorChange"
+                                <JFXColorPicker fx:id="colorPickText" editable="true" onAction="#testing"
                                                 promptText="Pick Color For Caption"/>
-                                <JFXTextField fx:id="txtCaption" labelFloat="true" promptText="Capation"/>
+                                <JFXTextField fx:id="txtCaption" labelFloat="true" onAction="#testing"
+                                              promptText="Capation"/>
                             </children>
                             <VBox.margin>
                                 <Insets top="30.0"/>
