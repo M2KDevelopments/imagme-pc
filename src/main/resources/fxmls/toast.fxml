@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox fx:id="toastContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="60.0" prefWidth="400.0" styleClass="toastContainer" stylesheets="@../styles.css"
+      xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="storylyn.toasts.ToastController">
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+    </padding>
+    <children>
+        <Label fx:id="lblMessage" text="This is where you write you message" textAlignment="CENTER" textFill="#dddddd"
+               wrapText="true">
+            <font>
+                <Font size="15.0"/>
+            </font>
+            <effect>
+                <Glow level="1.0"/>
+            </effect>
+        </Label>
+    </children>
+</VBox>

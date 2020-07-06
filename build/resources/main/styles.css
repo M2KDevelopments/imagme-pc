@@ -1,0 +1,24 @@
+.plainPane{
+    -fx-background-color:#000036;
+}
+
+.darkTranslucentPane{
+    -fx-background-color:rgba(0,0,0,0.6);
+}
+
+.floatingActionLabel{
+    -fx-background-color: linear-gradient(#ff8b00, #ff8b00);
+    -fx-background-radius: 50px;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 5px;
+    -fx-border-radius: 50px;
+    -fx-text-fill: WHITE;
+}
+
+.fontSize{
+     -fx-font-size: 23;
+ }
+.popUp {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
