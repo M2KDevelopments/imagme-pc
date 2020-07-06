@@ -1,4 +1,4 @@
-package storylyn.toasts
+package toasts
 
 import javafx.animation.FadeTransition
 import javafx.event.EventHandler

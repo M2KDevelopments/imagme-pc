@@ -13,7 +13,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.AnchorPane
 import javafx.stage.DirectoryChooser
 import javafx.stage.FileChooser
-import mdu.toasts.Toast
+import toasts.Toast
 import java.awt.Color
 import java.awt.Font
 import java.awt.Graphics2D
