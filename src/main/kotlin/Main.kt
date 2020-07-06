@@ -17,7 +17,7 @@ class Main : Application() {
         scene.fill = Color.TRANSPARENT
         stage.scene = scene
         stage.icons.add(Image(Objects.requireNonNull(javaClass.classLoader.getResourceAsStream("icons/icon_m2kdev.png"))))
-        stage.title = "Image Me"
+        stage.title = "ImagMe"
         stage.isResizable = false
         stage.centerOnScreen()
         stage.show()

@@ -21,7 +21,7 @@
             <items>
                 <VBox alignment="TOP_CENTER" spacing="6.0" styleClass="fontSize">
                     <children>
-                        <Label text="Image Me">
+                        <Label text="ImagMe">
                             <font>
                                 <Font name="System Bold" size="42.0"/>
                             </font>

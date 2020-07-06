@@ -45,7 +45,6 @@ class MainController : Initializable {
         //set up message box
         MsgBox.setup(mainScene)
 
-
     }
 
     @FXML
