@@ -127,8 +127,10 @@ class MainController : Initializable {
             list.addAll(oneSquarePattern())
             list.addAll(fourSquarePattern())
             list.addAll(fourSquarePattern(open = true))
-            list.addAll(randomPattern(number = 30, square = false))
+            list.addAll(randomPattern(numberOfImages = 30, square = false))
             list.addAll(randomPattern(square = true))
+            list.addAll(randomDownRight())
+            list.addAll(randomDownLeft())
 
             for ((index, image) in list.withIndex()) {
                 val file = File(folder.absolutePath, "Image $index.png")
@@ -386,11 +388,11 @@ class MainController : Initializable {
     /**
      * Graphics Patterns*
      */
-    private fun oneCirclePattern(open: Boolean = false, number: Int = 10): ArrayList<Image> {
+    private fun oneCirclePattern(open: Boolean = false, numberOfImages: Int = 10): ArrayList<Image> {
 
         val list = ArrayList<Image>()
 
-        for (i in 0 until number) {
+        for (i in 0 until numberOfImages) {
             val hashMap = getGraphicsStuff()
             val g: Graphics2D = hashMap["graphics"] as Graphics2D
             val bmp: BufferedImage = hashMap["image"] as BufferedImage
@@ -410,11 +412,11 @@ class MainController : Initializable {
         return list
     }
 
-    private fun fourCirclePattern(open: Boolean = false, number: Int = 10): ArrayList<Image> {
+    private fun fourCirclePattern(open: Boolean = false, numberOfImages: Int = 10): ArrayList<Image> {
 
         val list = ArrayList<Image>()
 
-        for (i in 0 until number) {
+        for (i in 0 until numberOfImages) {
             val hashMap = getGraphicsStuff()
             val g: Graphics2D = hashMap["graphics"] as Graphics2D
             val bmp: BufferedImage = hashMap["image"] as BufferedImage
@@ -437,11 +439,11 @@ class MainController : Initializable {
         return list
     }
 
-    private fun oneSquarePattern(open: Boolean = false, number: Int = 10): ArrayList<Image> {
+    private fun oneSquarePattern(open: Boolean = false, numberOfImages: Int = 10): ArrayList<Image> {
 
         val list = ArrayList<Image>()
 
-        for (i in 0 until number) {
+        for (i in 0 until numberOfImages) {
             val hashMap = getGraphicsStuff()
             val g: Graphics2D = hashMap["graphics"] as Graphics2D
             val bmp: BufferedImage = hashMap["image"] as BufferedImage
@@ -461,11 +463,11 @@ class MainController : Initializable {
         return list
     }
 
-    private fun fourSquarePattern(open: Boolean = false, number: Int = 10): ArrayList<Image> {
+    private fun fourSquarePattern(open: Boolean = false, numberOfImages: Int = 10): ArrayList<Image> {
 
         val list = ArrayList<Image>()
 
-        for (i in 0 until number) {
+        for (i in 0 until numberOfImages) {
             val hashMap = getGraphicsStuff()
             val g: Graphics2D = hashMap["graphics"] as Graphics2D
             val bmp: BufferedImage = hashMap["image"] as BufferedImage
@@ -488,12 +490,12 @@ class MainController : Initializable {
         return list
     }
 
-    private fun randomPattern(number: Int = 10, square: Boolean = false): ArrayList<Image> {
+    private fun randomPattern(numberOfImages: Int = 10, square: Boolean = false): ArrayList<Image> {
 
         val list = ArrayList<Image>()
         val rnd = Random()
 
-        for (i in 0 until number) {
+        for (i in 0 until numberOfImages) {
             rnd.setSeed(i.toLong())
 
             //get graphics
@@ -503,7 +505,7 @@ class MainController : Initializable {
 
 
             val open = rnd.nextInt() % 4 == 0
-            val amount = 7 + rnd.nextInt(15)
+            val amount = 10 + rnd.nextInt(40)
 
             for (j in 0 until amount) {
                 //start drawing
@@ -520,6 +522,83 @@ class MainController : Initializable {
                     val size = 75 + rnd.nextInt(200)
                     drawCircle(g, x, y, size, open = open)
                 }
+            }
+
+            //draw icon
+            drawIcon(g)
+
+            //convert to javafx image
+            val img = SwingFXUtils.toFXImage(bmp, null)
+
+            list.add(img)
+        }
+
+        return list
+    }
+
+    private fun randomDownRight(numberOfImages: Int = 30): ArrayList<Image> {
+        val list = ArrayList<Image>()
+        val rnd = Random()
+
+        for (i in 0 until numberOfImages) {
+            rnd.setSeed(i.toLong())
+
+            //get graphics
+            val hashMap = getGraphicsStuff()
+            val g: Graphics2D = hashMap["graphics"] as Graphics2D
+            val bmp: BufferedImage = hashMap["image"] as BufferedImage
+
+
+            val open = rnd.nextInt() % 4 == 0
+            val amount = 10 + rnd.nextInt(40)
+
+            for (j in 0 until amount) {
+                //start drawing
+
+                // random positioning and size
+                val x = rnd.nextInt((IMAGE_DEFAULT_SIZE / amount) * (j + 1))
+                val y = rnd.nextInt((IMAGE_DEFAULT_SIZE / amount) * (j + 1))
+                val size = (j * 2) + rnd.nextInt(amount * ((j.toFloat()) / 10f).toInt() + 1)
+                drawCircle(g, x, y, size, open = open)
+
+            }
+
+            //draw icon
+            drawIcon(g)
+
+            //convert to javafx image
+            val img = SwingFXUtils.toFXImage(bmp, null)
+
+            list.add(img)
+        }
+
+        return list
+    }
+
+    private fun randomDownLeft(numberOfImages: Int = 30): ArrayList<Image> {
+        val list = ArrayList<Image>()
+        val rnd = Random()
+
+        for (i in 0 until numberOfImages) {
+            rnd.setSeed(i.toLong())
+
+            //get graphics
+            val hashMap = getGraphicsStuff()
+            val g: Graphics2D = hashMap["graphics"] as Graphics2D
+            val bmp: BufferedImage = hashMap["image"] as BufferedImage
+
+
+            val open = rnd.nextInt() % 4 == 0
+            val amount = 10 + rnd.nextInt(40)
+
+            for (j in 0 until amount) {
+
+                // random positioning and size
+                val x = rnd.nextInt((IMAGE_DEFAULT_SIZE / amount) * (amount - j + 1))
+                val y = rnd.nextInt((IMAGE_DEFAULT_SIZE / amount) * (j + 1))
+                val size = (j * 2) + rnd.nextInt(amount * ((j.toFloat()) / 10f).toInt() + 1)
+                drawCircle(g, x, y, size, open = open)
+
             }
 
             //draw icon

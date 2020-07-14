@@ -8,7 +8,7 @@
 <VBox fx:id="toastContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity" prefHeight="60.0" prefWidth="400.0" styleClass="toastContainer" stylesheets="@../styles.css"
       xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="storylyn.toasts.ToastController">
+      fx:controller="toasts.ToastController">
     <padding>
         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
     </padding>
